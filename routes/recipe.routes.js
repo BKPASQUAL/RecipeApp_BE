@@ -4,7 +4,7 @@ const verifyToken = require('../middleware/auth.middleware');
 
 const router = express.Router();
 
-router.get('/category/:category', verifyToken, fetchRecipesByCategory);
-router.get('/:id', verifyToken, fetchRecipesById);
+router.get('/category/:category', fetchRecipesByCategory);
+router.get('/:id', fetchRecipesById);
 
 module.exports = router;
