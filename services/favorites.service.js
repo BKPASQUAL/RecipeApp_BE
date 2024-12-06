@@ -1,4 +1,4 @@
-const { getFavoritesCollection } = require("../config/db.config");
+const { getFavoritesCollection } = require("../config/db");
 
 const ERROR_MESSAGES = {
   fetch: "Failed to fetch favourites",
