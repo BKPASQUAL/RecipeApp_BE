@@ -15,13 +15,22 @@ async function addFavoriteRecipe(req, res) {
   const userId = req.user.userId;
 
   try {
-    const favoriteExists = await favoritesService.findFavouriteRecipeById(userId, recipeId);
+    const favoriteExists = await favoritesService.findFavouriteRecipeById(
+      userId,
+      recipeId
+    );
 
     if (favoriteExists) {
       return res.status(400).json({ message: RESPONSE_MESSAGES.recipeExists });
     }
 
-    await favoritesService.addFavorite({ userId, recipeId, recipeTitle, recipeCategory, recipeImgURL });
+    await favoritesService.addFavorite({
+      userId,
+      recipeId,
+      recipeTitle,
+      recipeCategory,
+      recipeImgURL,
+    });
 
     return res.status(201).json({ message: RESPONSE_MESSAGES.addSuccess });
   } catch (error) {

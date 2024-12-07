@@ -18,7 +18,13 @@ async function findFavouriteRecipeById(userId, recipeId) {
   }
 }
 
-async function addFavorite({ userId, recipeId, recipeTitle, recipeCategory, recipeImgURL }) {
+async function addFavorite({
+  userId,
+  recipeId,
+  recipeTitle,
+  recipeCategory,
+  recipeImgURL,
+}) {
   try {
     const favoritesCollection = getFavoritesCollection();
 
