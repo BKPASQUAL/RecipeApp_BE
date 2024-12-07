@@ -4,8 +4,8 @@ const verifyToken = require('../middleware/auth.middleware');
 
 const router = express.Router();
 
-router.post('/', addFavoriteRecipe);
-router.get('/', getFavoriteRecipes);
+router.post('/',verifyToken, addFavoriteRecipe);
+router.get('/',verifyToken, getFavoriteRecipes);
 router.delete('/:recipeId', removeFavoriteRecipe);
 
 module.exports = router;

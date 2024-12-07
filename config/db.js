@@ -5,15 +5,10 @@ dotenv.config();
 const uri = process.env.MONGODB_URI;
 
 let dbClient;
-let favoritesCollection;
 let usersCollection;
+let favoritesCollection;
 
 async function connectToDatabase() {
-  if (dbClient) {
-    console.log("Reusing existing database connection.");
-    return dbClient.db("MealInventory");
-  }
-
   try {
     dbClient = new MongoClient(uri, {
       serverApi: {
@@ -28,19 +23,22 @@ async function connectToDatabase() {
     usersCollection = mealdb.collection("users");
     favoritesCollection = mealdb.collection("favorites");
 
-    console.log("Successfully connected to DB!");
-    return mealdb;
+    console.log("Successfully connected to MongoDB!");
   } catch (error) {
-    console.error("Failed to connect to DB", error);
-    throw error;
+    console.error("Failed to connect to MongoDB", error);
   }
 }
 
-async function closeConnection() {
-  if (dbClient) {
-    await dbClient.close();
-    console.log("Connection to database closed.");
-  }
+function getUsersCollection() {
+  return usersCollection;
 }
 
-module.exports = { connectToDatabase, closeConnection };
+function getFavoritesCollection() {
+  return favoritesCollection;
+}
+
+module.exports = {
+  connectToDatabase,
+  getUsersCollection,
+  getFavoritesCollection,
+};
