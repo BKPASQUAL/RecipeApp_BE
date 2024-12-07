@@ -6,6 +6,6 @@ const router = express.Router();
 
 router.post('/',verifyToken, addFavoriteRecipe);
 router.get('/',verifyToken, getFavoriteRecipes);
-router.delete('/:recipeId', removeFavoriteRecipe);
+router.delete('/:recipeId', verifyToken, removeFavoriteRecipe);
 
 module.exports = router;
