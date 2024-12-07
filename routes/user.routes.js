@@ -21,7 +21,7 @@ const loginValidationRules = [
   body("password").notEmpty().withMessage("Password is required"),
 ];
 
-// routes
+// route
 router.post("/register", registerValidationRules, registerUser);
 router.post("/login", loginValidationRules, loginUser);
 

@@ -1,5 +1,5 @@
 const bcrypt = require("bcrypt");
-const { getUsersCollection } = require("../config/db.config");
+const { getUsersCollection } = require("../config/db");
 
 // Centralized error messages for consistency
 const ERROR_MESSAGES = {
